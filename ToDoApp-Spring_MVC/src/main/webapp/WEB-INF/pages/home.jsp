@@ -18,6 +18,19 @@
 
 <div class="container mt-3">
     <h1 class="text-center">Welcome to TODO Manager</h1>
+
+    <c:if test="${ not empty msg}">
+
+        <div class="alert alert-success">
+            <b>
+                <c:out value="${msg}"></c:out>
+            </b>
+
+        </div>
+
+    </c:if>
+
+
     <div class="row mt-5">
 
         <div class="col-md-2">
@@ -32,6 +45,24 @@
         <div class="col-md-10">
             <c:if test="${page=='home'}">
                 <h1 class="text-center">ALL TODOs</h1>
+
+                <c:forEach items="${todos}" var="t">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h3><c:out value="${t.todoTitle}"></c:out></h3>
+                                <p>
+                                    <h5><c:out value="${t.todoContent}"></c:out></h5>
+
+                                </p>
+                        </div>
+
+                    </div>
+
+
+                </c:forEach>
+
+
             </c:if>
 
             <c:if test="${page=='add'}">
