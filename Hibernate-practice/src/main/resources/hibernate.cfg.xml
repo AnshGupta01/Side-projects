@@ -17,6 +17,7 @@
         <mapping class="com.ansh.Address"/>
         <mapping class="com.map.Question"/>
         <mapping class="com.map.Answer"/>
+        <mapping resource="Person.hbm.xml"/>
 <!--        <mapping class="com.map1.Emp"/>-->
 <!--        <mapping class="com.map1.Project"/>-->
     </session-factory>

@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name = "myStudents") //defining table name
 public class Student {
 
-    @Id //mark any coloum as the id
+    @Id //mark any column as the id
     private int id;
     private String name;
     private String city;
