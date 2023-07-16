@@ -1,10 +1,15 @@
 package com.entities;
 
-import javax.xml.crypto.Data;
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "ToDoTable")
 public class ToDo {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int TodoId;
     private String todoTitle;
     private String todoContent;
     private Date todoDate;

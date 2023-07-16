@@ -1,5 +1,6 @@
 package com.controllers;
 
+import com.dao.ToDoDao;
 import com.entities.ToDo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,23 +8,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.ServletContext;
 import java.util.Date;
 import java.util.List;
 
 @Controller
 public class HomeCtrl{
-
     @Autowired
-    ServletContext context;
+    ToDoDao toDoDao;
+
     @RequestMapping("/home")
     public String home(Model model){
 
         String str = "home";
         model.addAttribute("page", str);
 
-        List<ToDo> list = (List<ToDo>) context.getAttribute("list");
+        List<ToDo> list = this.toDoDao.getAll();
         model.addAttribute("todos", list);
         return "home";
     }
@@ -41,13 +40,9 @@ public class HomeCtrl{
     public String saveTodo(@ModelAttribute("todo") ToDo t, Model model){
         System.out.println(t);
         //getting the todo list of context
-        List<ToDo> list = (List<ToDo>) context.getAttribute("list");
-        list.add(t);
-        model.addAttribute("msg","Successfully Added...");
-
-
         t.setTodoDate(new Date());
-
+        this.toDoDao.save(t);
+        model.addAttribute("msg","Successfully Added...");
         return "home";
     }
 }
