@@ -8,17 +8,19 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
+
+
     
     <bean name="Employee1" class="org.springcore.Emp">
         <property name="name" value="Ansh"/>
 
-        <property name="phones" value="8238210021">
-<!--            <list>-->
-<!--                <value>8209141249</value>-->
-<!--                <value>7393094832</value>-->
-<!--                <value>0938420398</value>-->
-<!--                <null/>-->
-<!--            </list>-->
+        <property name="phones">
+            <list>
+                <value>8209141249</value>
+                <value>7393094832</value>
+                <value>0938420398</value>
+                <null/>
+            </list>
         </property>
 
         <property name="addresses">

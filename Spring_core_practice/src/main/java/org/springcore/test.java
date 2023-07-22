@@ -13,6 +13,7 @@ public class test {
         System.out.println(employee1.getAddresses());
         System.out.println(employee1.getCourses());
         System.out.println(employee1.getProps());
+        System.out.println(employee1.getPhones().getClass().getName());
 
     }
 }

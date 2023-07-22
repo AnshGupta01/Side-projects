@@ -12,7 +12,9 @@
 
     <context:annotation-config/>
 
-    <bean class="com.springcore.autowire.annotation.Address" name="address" p:city="Delhi" p:street="complex"/>
+    <bean class="com.springcore.autowire.annotation.Address" name="address1" p:city="Delhi" p:street="complex"/>
+    <bean class="com.springcore.autowire.annotation.Address" name="address2" p:city="Mumbai" p:street="complex"/>
+
     <bean class="com.springcore.autowire.annotation.Employee" name="employee1"/>
 
 
