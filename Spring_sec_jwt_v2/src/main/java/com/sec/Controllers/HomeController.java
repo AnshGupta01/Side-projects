@@ -1,6 +1,6 @@
 package com.sec.Controllers;
 
-import com.sec.Models.User;
+import com.sec.Entity.User;
 import com.sec.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

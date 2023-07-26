@@ -1,8 +1,10 @@
 package com.sec.Controllers;
 
+import com.sec.Entity.User;
 import com.sec.Models.JwtRequest;
 import com.sec.Models.JwtResponse;
 import com.sec.Security.JwtHelper;
+import com.sec.Service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -58,5 +63,10 @@ public class AuthController {
     @ExceptionHandler(BadCredentialsException.class)
     public String exceptionHandler() {
         return "Credentials Invalid !!";
+    }
+
+    @PostMapping("/create-user")
+    public User createUser(@RequestBody User user){
+        return userService.createUser(user);
     }
 }
