@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "json-server":"json-server --watch src/database/db.json --host 127.0.0.1 --port 3002",
+    "json-server": "json-server --watch src/database/db.json --host 127.0.0.1 --port 3002",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-react": "^7.32.2"
+    "eslint-plugin-react": "^7.32.2",
+    "prettier": "3.0.3"
   }
 }

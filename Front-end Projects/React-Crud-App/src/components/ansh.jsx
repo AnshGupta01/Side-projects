@@ -1,10 +1,5 @@
-
-
-
 const Ansh = () => {
-    return(
-        <p>Hello from corner</p>
-    )
-}
+  return <p>Hello from corner</p>;
+};
 
 export default Ansh;
