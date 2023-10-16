@@ -23,7 +23,7 @@ app.post("/api/shorturl", (req, res) => {
   console.log(req.body);
   const url = req.body.url;
 
-  const dnsLookup = dns.lookup(
+  dns.lookup(
     urlParser.parse(url).hostname,
     async (err, address) => {
       if (!address) {
