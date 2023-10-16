@@ -23,35 +23,42 @@ app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
 });
 
-// listen for requests :)
 var listener = app.listen(3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
 
-const responseObject = {};
+app.get("/api/:date?", (request, response) => {
+  let date = request.params.date;
+  let unixDate;
+  let utcDate;
+  let dateObject;
 
-app.get("/api/timestamp/:input", (request, response) => {
-  const input = request.params.input;
+  let isUnix = /^\d+$/.test(date);
 
-  if (input.includes("-")) {
-    responseObject["unix"] = new Date(input).getTime();
-    responseObject["utc"] = new Date(input).toUTCString();
-  } else {
-    input = parseInt(input);
-    responseObject["unix"] = new Date(input).getTime();
-    responseObject["utc"] = new Date(input).toUTCString();
+  if(!date) {
+    dateObject = new Date();
+  }
+  else if (isUnix && date) {
+    unixDate = parseInt(date);
+    dateObject = new Date(unixDate);
+  } 
+  else if (!isUnix && date) {
+    dateObject = new Date(date);
   }
 
-  if(!responseObject['unix'] || !responseObject['utc']){
-    response.json({error: 'Invalid Date'})
+
+  if (dateObject.toString() === "Invalid Date") {
+    response.json({
+      error: "Invalid Date",
+    });
+    return;
   }
 
-  response.json(responseObject);
+  unixDate = dateObject.getTime();
+  utcDate = dateObject.toUTCString();
+
+  response.json({
+    unix: unixDate,
+    utc: utcDate,
+  });
 });
-
-app.get('/api/timestamp', (request, response) => {
-  responseObject['unix'] = new Date().getTime()
-  responseObject['utc'] = new Date().toUTCString()
-  
-  response.json(responseObject)
-})
