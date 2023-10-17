@@ -1,4 +1,4 @@
-# Sample Hardhat Project
+# Hardhat FUND_ME Project
 
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
@@ -10,4 +10,11 @@ npx hardhat test
 REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.js
+```
+
+```
+yarn install
+yarn hardhat compile
+yarn hardhat deploy --network sepolia
+yarn hardhat test
 ```

@@ -8,6 +8,7 @@ require("hardhat-deploy")
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "undefined"
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "undefined"
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "undefined"
+const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY
 
 module.exports = {
     defaultNetwork: "hardhat",
@@ -35,13 +36,15 @@ module.exports = {
     },
     etherscan: {
         apiKey: ETHERSCAN_API_KEY,
+        customChains: [],
     },
     gasReporter: {
         enabled: true,
         currency: "USD",
         outputFile: "gas-report.txt",
         noColors: true,
-        // coinmarketcap: COINMARKETCAP_API_KEY,
+        coinmarketcap: COINMARKETCAP_API_KEY,
+        token: "ETH"
     },
     namedAccounts: {
         deployer: {
