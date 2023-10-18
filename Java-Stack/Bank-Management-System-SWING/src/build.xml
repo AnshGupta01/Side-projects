@@ -1,0 +1,6 @@
+<project name ="bank management system" default="info" basedir=".">
+
+        <target name ="info">
+        <echo>This is ANT</echo>
+        </target>
+</project>
