@@ -1,15 +1,15 @@
-# Hardhat FUND_ME Project
+# Fund Me project with Solidity & JS
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This project is part of the FCC Blockchain course. It has two contracts which depict the usecase of a FundMe campaign, there are deployment, testing and other scripts involved in the project.
 
-Try running some of the following tasks:
+It is created with the help of hardhat:
 
 ```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+yarn hardhat help
+yarn hardhat node
+yarn hardhat run scripts/deploy.js
+yarn hardhat run scripts/withdraw.js --network localhost
+yarn hardhat run scripts/fund.js --network localhost  
 ```
 
 ```
