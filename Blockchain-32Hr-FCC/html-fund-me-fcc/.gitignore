@@ -1,2 +1,8 @@
 /node_modules
 /yarn.lock
+
+.env
+.encryptedKey.json
+node_modules
+dist
+/.idea/
