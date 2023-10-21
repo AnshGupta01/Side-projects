@@ -8,10 +8,10 @@ import "@chainlink/contracts/src/v0.8/interfaces/AutomationCompatibleInterface.s
 import "hardhat/console.sol";
 
 /* Errors */
-    error Raffle__UpkeepNotNeeded(uint256 currentBalance, uint256 numPlayers, uint256 raffleState);
-    error Raffle__TransferFailed();
-    error Raffle__SendMoreToEnterRaffle();
-    error Raffle__RaffleNotOpen();
+error Raffle__UpkeepNotNeeded(uint256 currentBalance, uint256 numPlayers, uint256 raffleState);
+error Raffle__TransferFailed();
+error Raffle__SendMoreToEnterRaffle();
+error Raffle__RaffleNotOpen();
 
 /**@title A sample Raffle Contract
  * @author Patrick Collins
@@ -25,8 +25,7 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
         CALCULATING
     }
     /* State variables */
-
-    /* Chainlink VRF Variables */
+    // Chainlink VRF Variables
     VRFCoordinatorV2Interface private immutable i_vrfCoordinator;
     uint64 private immutable i_subscriptionId;
     bytes32 private immutable i_gasLane;
@@ -34,7 +33,7 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
     uint16 private constant REQUEST_CONFIRMATIONS = 3;
     uint32 private constant NUM_WORDS = 1;
 
-    /* Lottery Variables */
+    // Lottery Variables
     uint256 private immutable i_interval;
     uint256 private immutable i_entranceFee;
     uint256 private s_lastTimeStamp;
@@ -93,13 +92,13 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
     function checkUpkeep(
         bytes memory /* checkData */
     )
-    public
-    view
-    override
-    returns (
-        bool upkeepNeeded,
-        bytes memory /* performData */
-    )
+        public
+        view
+        override
+        returns (
+            bool upkeepNeeded,
+            bytes memory /* performData */
+        )
     {
         bool isOpen = RaffleState.OPEN == s_raffleState;
         bool timePassed = ((block.timestamp - s_lastTimeStamp) > i_interval);
@@ -116,7 +115,7 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
     function performUpkeep(
         bytes calldata /* performData */
     ) external override {
-        (bool upkeepNeeded,) = checkUpkeep("");
+        (bool upkeepNeeded, ) = checkUpkeep("");
         // require(upkeepNeeded, "Upkeep not needed");
         if (!upkeepNeeded) {
             revert Raffle__UpkeepNotNeeded(
@@ -157,7 +156,7 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
         s_players = new address payable[](0);
         s_raffleState = RaffleState.OPEN;
         s_lastTimeStamp = block.timestamp;
-        (bool success,) = recentWinner.call{value: address(this).balance}("");
+        (bool success, ) = recentWinner.call{value: address(this).balance}("");
         // require(success, "Transfer failed");
         if (!success) {
             revert Raffle__TransferFailed();
