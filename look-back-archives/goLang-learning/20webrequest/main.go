@@ -27,10 +27,10 @@ func PerformGetRequest(myurl string) {
 
 	var responseString strings.Builder
 	content, _ := io.ReadAll(res.Body)
+
+	//Data of byte being written to a string
 	byteCount, _ := responseString.Write(content)
 
 	fmt.Println(responseString.String())
 	fmt.Println(byteCount)
-
-	//fmt.Println(string(content))
 }
