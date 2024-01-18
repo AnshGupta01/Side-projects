@@ -1,2 +1,1 @@
-Screenshot:
-![Screenshot](https://github.com/AnshGupta01/frontend_applications_practice/assets/26479077/4836a320-ed71-4964-b2a8-86c87bd94f2f)
+![Amazon](https://github.com/AnshGupta01/Other-projects-practice/assets/26479077/16f29555-5a6b-4ae6-953f-0a45cd7d714a)
